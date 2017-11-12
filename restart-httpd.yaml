@@ -1,0 +1,10 @@
+---
+- hosts: all
+  name: restart web server
+  become: yes
+  tasks:
+    - name: restart apache service
+      service:
+        name: httpd
+        state: restarted
+        enabled: yes
