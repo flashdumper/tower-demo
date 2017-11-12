@@ -42,12 +42,6 @@
         enabled: yes
 
   handlers:
-    - name: restart firewalld service
-      service:
-        name: firewalld
-        state: restarted
-        enabled: yes
-
     - name: restart apache service
       service:
         name: httpd
