@@ -9,8 +9,8 @@
   gather_facts: false
   connection: local
   vars:
-    vcenter_hostname: vcsa.box
-    esxhost: 172.28.20.112
+    vcenter_hostname: 172.28.20.112
+    esxhost: 172.28.20.109
     datastore: NexentaStor1
     network: TRUNK
     vmtemplate: Template_Centos72
@@ -26,7 +26,7 @@
         password: "{{ vcenter_pass }}"
         esxi_hostname: "{{ esxhost }}"
         datacenter: TestDC
-        name: "{{ name }}"
+        name: "{{ vm_name }}"
         template: "{{ vmtemplate }}"
         disk:
           - size_gb: "{{ disk_size | default(20) }}"
