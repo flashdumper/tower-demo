@@ -36,9 +36,9 @@
           memory_mb: 512
           num_cpus: 1
           scsi: paravirtual
-        networks:
-        - name: "VM Network"
-          mac: aa:bb:dd:aa:00:14
+#        networks:
+#        - name: "VM Network"
+#          mac: aa:bb:dd:aa:00:14
         wait_for_ip_address: yes
       delegate_to: localhost
       register: newvm
