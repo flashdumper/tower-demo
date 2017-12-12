@@ -4,7 +4,8 @@
 # Create a new VM from a template
 
 - name: VM from template
-  hosts: vmcreate
+#  hosts: vmcreate
+  hosts: localhost
   gather_facts: false
   connection: local
   vars:
