@@ -37,7 +37,7 @@
           num_cpus: 1
           scsi: paravirtual
         networks:
-        - name: TRUNK
+        - name: em2
           mac: aa:bb:dd:aa:00:14
         wait_for_ip_address: yes
       delegate_to: localhost
