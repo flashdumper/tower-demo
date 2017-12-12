@@ -34,7 +34,6 @@
             datastore: "{{ datastore }}"
         networks:
           - name: "{{ network }}"
-	
         hardware:
           memory_mb: "{{ vm_memory | default(1024) }}"
         wait_for_ip_address: True
