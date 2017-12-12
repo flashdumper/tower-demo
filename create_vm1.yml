@@ -1,0 +1,48 @@
+---
+# vim: set ft=ansible et ts=2 sw=2:
+#
+# Create a new VM from a template
+
+- name: VM from template
+#  hosts: vmcreate
+  hosts: localhost
+  gather_facts: false
+  connection: local
+  vars:
+    vcenter_hostname: 172.28.20.112
+    esxhost: 172.28.20.109
+    datastore: NexentaStor1
+    network: TRUNK
+    vmtemplate: Template_Centos72
+    vmcluster: HA_Cluster
+    notes: Created by Ansible
+    dumpfacts: False
+  tasks:
+    - name: Create a VM from a template
+      vmware_guest:
+        hostname: "{{ vcenter_hostname }}"
+        username: "{{ vcenter_user }}"
+        password: "{{ vcenter_pass }}"
+        validate_certs: no
+        folder: /testvms
+        name: testvm_2
+        state: poweredon
+        template: Template_Centos72
+        disk:
+        - size_gb: 10
+          type: thin
+          datastore: g73_datastore
+        hardware:
+          memory_mb: 512
+          num_cpus: 1
+          scsi: paravirtual
+        networks:
+        - name: VM Network
+          mac: aa:bb:dd:aa:00:14
+        wait_for_ip_address: yes
+      delegate_to: localhost
+      register: newvm
+
+    - name: IP address info
+      debug:
+        msg: "{{ newvm.instance.ipv4 }} {{ name }}"
