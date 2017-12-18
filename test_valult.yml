@@ -5,7 +5,4 @@
   become: true
   tasks:
   - include_vars: vault.yml
-
-  - file: 
-     path: /tmp/{{username}}
-     state: touch
+  - shell: echo {{username}} 
