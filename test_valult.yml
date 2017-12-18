@@ -1,6 +1,6 @@
 ---
 - name: check vault
-  hosts: localhost
+  hosts: Ansible-Tower_4223c662-9da7-34db-e3b3-12cc801614cb
   gather_facts: false
   become: true
   tasks:
