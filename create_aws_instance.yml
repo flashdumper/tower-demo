@@ -1,0 +1,31 @@
+---
+- name: Provision Cloud Instance
+  hosts: all
+  gather_facts: false
+  tasks:
+#    - name: envrnment var is 
+#      debug:
+#        var: envrnment
+
+    - name: create real AWS instance
+      ec2:
+       aws_access_key: "{{AWS_ACCESS_KEY}}"
+       aws_secret_key: "{{AWS_SECRET_KEY}}"
+       key_name: dzuev-key
+       instance_type: t2.micro
+       image: ami-c998b6b2
+       instance_tags:
+         Name: "{{inst_name}}"
+       wait: yes
+       group: launch-wizard-33
+       exact_count: 1
+       count_tag: foo
+       vpc_subnet_id: subnet-c86b14e2
+       assign_public_ip: yes
+       region: us-east-1
+      register: ec2
+
+
+    - name: get the data about the instance
+      debug:
+        var: ec2
