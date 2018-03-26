@@ -16,6 +16,7 @@
        image: ami-c998b6b2
        instance_tags:
          Name: "{{inst_name}}"
+         Type: Linux_AWS
        wait: yes
        group: default
        exact_count: 1
